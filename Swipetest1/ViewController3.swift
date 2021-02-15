@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ViewController3.swift
 //  Swipetest1
 //
 //  Created by Stéphane Trouvé on 15/02/2021.
@@ -7,11 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController3: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
         rightSwipe.direction = UISwipeGestureRecognizer.Direction.right
@@ -20,25 +19,19 @@ class ViewController: UIViewController {
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
         leftSwipe.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(leftSwipe)
-        
-    }
 
-
-}
-
-extension UIViewController {
-    
-    @objc func swipeAction(swipe:UISwipeGestureRecognizer) {
-        
-        switch swipe.direction.rawValue {
-        case 1:
-            performSegue(withIdentifier: "goLeft", sender: self)
-        case 2:
-            performSegue(withIdentifier: "goRight", sender: self)
-        default:
-            break
-        }
-        
+        // Do any additional setup after loading the view.
     }
     
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }
