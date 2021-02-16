@@ -10,11 +10,12 @@ import UIKit
 public var dummy = Int()
 
 public var PronosA = [Pronostiek]()
+public var PronosB = [[Pronostiek]]()
 // PronosA contains real scores
 
 class ViewController: UIViewController {
     
-    var PronosB = [[Pronostiek]]()
+    //var PronosB = [[Pronostiek]]()
     // PronosB contains guesses of all players
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -41,7 +42,8 @@ class ViewController: UIViewController {
         }
         
         let sview = UIScrollView()
-        sview.frame = CGRect(x: 0, y: view.frame.height * 0.08, width: view.frame.width, height: view.frame.height * 0.84)
+        sview.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+//        sview.frame = CGRect(x: 0, y: view.frame.height * 0.08, width: view.frame.width, height: view.frame.height * 0.84)
         sview.showsVerticalScrollIndicator = false
         
         self.view.addSubview(sview)
