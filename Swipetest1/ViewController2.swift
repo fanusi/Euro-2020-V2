@@ -52,8 +52,16 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
         var game: String = "No data"
         
         if PronosB.count > 0 {
-        
-            game = PronosB[0][row].home_Team! + " - " + PronosB[0][row].away_Team!
+            
+            if row == 0 {
+                
+                game = "Select game"
+            } else {
+                
+                game = PronosB[0][row-1].home_Team! + " - " + PronosB[0][row-1].away_Team!
+                
+            }
+    
         }
         
         return game
@@ -62,14 +70,39 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        let sview = UIScrollView()
-        sview.showsVerticalScrollIndicator = false
-        sview.frame = CGRect(x: 0, y: 0, width: View1.frame.width, height: View1.frame.height)
-
-        View1.addSubview(sview)
-        sview.edgeTo(view: View1)
-
-        visualizer(choice1: row, team1: PronosB[0][row].home_Team!, team2: PronosB[0][row].away_Team!, viewP: sview)
+        if row == 0 {
+            
+            View1.subviews.forEach { (item) in
+                item.removeFromSuperview()
+            }
+            
+            let sview = UIScrollView()
+            sview.showsVerticalScrollIndicator = false
+            sview.frame = CGRect(x: 0, y: 0, width: View1.frame.width, height: View1.frame.height)
+            View1.addSubview(sview)
+            sview.edgeTo(view: View1)
+            
+            let label1 = UILabel(frame: CGRect(x: View1.frame.width * 0.4, y: View1.frame.height * 0.4, width: View1.frame.width * 0.3, height: View1.frame.height * 0.2))
+            
+            label1.textAlignment = NSTextAlignment.left
+            label1.text = "Select game"
+            label1.font.withSize(12)
+            //label.backgroundColor = .red
+            label1.textColor = .black
+            sview.addSubview(label1)
+            
+            
+        } else {
+            
+            let sview = UIScrollView()
+            sview.showsVerticalScrollIndicator = false
+            sview.frame = CGRect(x: 0, y: 0, width: View1.frame.width, height: View1.frame.height)
+            View1.addSubview(sview)
+            sview.edgeTo(view: View1)
+            
+            visualizer(choice1: row-1, team1: PronosB[0][row-1].home_Team!, team2: PronosB[0][row-1].away_Team!, viewP: sview)
+            
+        }
         
     }
     
@@ -117,7 +150,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
                 createlabels(type: 3, superviewer: actualview, teller: index1 + 1, choice1: choice1, team1: team1, team2: team2)
                 createlabels(type: 4, superviewer: actualview, teller: index1 + 1, choice1: choice1, team1: team1, team2: team2)
                 
-                let label2 = UILabel(frame: CGRect(x: 0, y: 0, width: actualview.bounds.width * 0.5, height: actualview.bounds.height * 0.3))
+            let label2 = UILabel(frame: CGRect(x: actualview.bounds.width * 0.05, y: 0, width: actualview.bounds.width * 0.5, height: actualview.bounds.height * 0.3))
                 label2.text = PronosB[index1][0].user
                 label2.font.withSize(11)
                 actualview.addSubview(label2)
