@@ -56,6 +56,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             if row == 0 {
                 
                 game = "Select game"
+                
             } else {
                 
                 game = PronosB[0][row-1].home_Team! + " - " + PronosB[0][row-1].away_Team!
@@ -135,7 +136,7 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             
             }
             
-            exampleview.contentSize = CGSize(width: br, height: CGFloat(n) * ho / 8)
+            exampleview.contentSize = CGSize(width: br, height: CGFloat(n + 10) * ho / 8)
             
         }
         
@@ -175,8 +176,8 @@ class ViewController2: UIViewController, UIPickerViewDataSource, UIPickerViewDel
             let temp4:String = team2
             var temp5:String = ""
             
-            temp2 = String(PronosB[teller-1][0].home_Goals)
-            temp3 = String(PronosB[teller-1][0].away_Goals)
+            temp2 = String(PronosB[teller-1][choice1].home_Goals)
+            temp3 = String(PronosB[teller-1][choice1].away_Goals)
             
             
             if type == 1 {
